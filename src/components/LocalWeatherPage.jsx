@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 
 import Navbar from "./Navbar";
-
-const API_KEY = '10ae3caf914ce7289667602487790305';
 const BASE_URL = 'http://api.openweathermap.org/';
 
 function LocalWeatherPage() {
