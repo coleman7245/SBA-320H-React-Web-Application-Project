@@ -20,3 +20,8 @@
     color: white;
     background-color: red;
 }
+
+#location {
+    color: white;
+    font: 1em 'Arial';
+}
