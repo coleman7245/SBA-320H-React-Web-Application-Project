@@ -3,8 +3,6 @@ import {APIProvider} from '@vis.gl/react-google-maps';
 
 import './styles/App.css';
 
-const GOOGLE_API_KEY = 'AIzaSyDcaZ4f66RiyRPigRfOrHlt-fkrisaufII';
-
 import HomePage from './components/HomePage.jsx';
 import AboutPage from './components/AboutPage.jsx';
 import LocalWeatherPage from './components/LocalWeatherPage.jsx';
