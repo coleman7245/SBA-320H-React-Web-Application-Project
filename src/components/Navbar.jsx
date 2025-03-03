@@ -5,10 +5,13 @@ function Navbar({className='Navbar'}) {
     return (
         <div className={className}>
             <Link to='/' style={{textDecoration: 'none'}}>
-                <div>Home</div>
+                Home
             </Link>
-            <Link to='/some' style={{textDecoration: 'none'}}>
-                <div>Some</div>
+            <Link to='/localweather' style={{textDecoration: 'none'}}>
+                Local Weather
+            </Link>
+            <Link to='/about' style={{textDecoration: 'none'}}>
+                About
             </Link>
         </div>
     )

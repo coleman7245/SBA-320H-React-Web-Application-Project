@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 
-function SomePage() {
+function AboutPage() {
     return (
         <div>
             <Navbar />
@@ -8,4 +8,4 @@ function SomePage() {
     )
 }
 
-export default SomePage;
+export default AboutPage;

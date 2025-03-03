@@ -1,15 +1,19 @@
 .Navbar {
     background-color: red;
+    border: 5px solid white;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-.Navbar div {
-    color: white;
-}
-
 .Navbar a {
-    text-decoration: 'none';
     text-align: center;
     float: left;
-    padding: 1% 1%;
+    padding: 0.5% 0.5%;
+    color: white;
+    font: 1em 'Arial';
+}
+
+.Navbar a:hover {
+    background-color: white;
+    color: red;
 }

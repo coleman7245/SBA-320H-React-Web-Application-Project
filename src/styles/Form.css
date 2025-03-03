@@ -1,0 +1,11 @@
+.Form {
+    padding: 1%;
+}
+
+.Form label {
+    color: white;
+}
+
+.Form input {
+    margin: 0.2% 0;
+}
