@@ -6,7 +6,8 @@ import HomePage from './components/HomePage.jsx';
 import AboutPage from './components/AboutPage.jsx';
 import LocalWeatherPage from './components/LocalWeatherPage.jsx';
 
-const BASE_URL = 'http://api.openweathermap.org/';
+const BASE_GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct?';
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 function App() {
 

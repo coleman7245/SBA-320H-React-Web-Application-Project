@@ -2,29 +2,29 @@ import { useReducer } from 'react';
 import '../styles/Form.css';
 
 function Form({className='Form'}) {
-    const [state, dispatch] = useReducer(reducer, {'city' : '', 'province' : '', 'country' : '', 'cityInput' : '', 'provinceInput' : '', 'countryInput' : ''});
+    const [state, dispatch] = useReducer(reducer, {'city' : '', 'countryCode' : '', 'stateCode' : '', 'cityInput' : '', 'countryCodeInput' : '', 'stateCodeInput' : ''});
 
     function reducer(state, action) {
         let newState = {...state};
 
         switch(action.type) {
-            case 'SET_CITY':
+            case 'SET_CITY_NAME':
                 newState.cityInput = action.event.target.value;
                 return newState;
-            case 'SET_COUNTRY':
-                newState.countryInput = action.event.target.value;
+            case 'SET_COUNTRY_CODE':
+                newState.countryCodeInput = action.event.target.value;
                 return newState;
-            case 'SET_PROVINCE':
-                newState.provinceInput = action.event.target.value;
+            case 'SET_STATE_CODE':
+                newState.stateCodeInput = action.event.target.value;
                 return newState;
             case 'SUBMIT_FORM':
                 action.event.preventDefault();
                 newState.city = newState.cityInput;
-                newState.province = newState.provinceInput;
-                newState.country = newState.countryInput;
+                newState.countryCode = newState.countryCodeInput;
+                newState.stateCode = newState.stateCodeInput;
                 newState.cityInput = '';
-                newState.countryInput = '';
-                newState.provinceInput = '';
+                newState.countryCodeInput = '';
+                newState.stateCodeInput = '';
                 return newState;
             default:
                 return state;
@@ -37,11 +37,11 @@ function Form({className='Form'}) {
                 <label>
                     Enter your location
                     <br />
-                    <input type='text' onChange={(e) => dispatch({type : 'SET_CITY', event : e})} value={state.cityInput} placeholder='City'/>
+                    <input type='text' onChange={(e) => dispatch({type : 'SET_CITY_NAME', event : e})} value={state.cityInput} placeholder='City Name'/>
                     <br />
-                    <input type='text'  onChange={(e) => dispatch({type : 'SET_PROVINCE', event : e})} value={state.provinceInput} placeholder='State or Province' />
+                    <input type='text'  onChange={(e) => dispatch({type : 'SET_STATE_CODE', event : e})} value={state.stateCodeInput} placeholder='State Code' />
                     <br />
-                    <input type='text'  onChange={(e) => dispatch({type : 'SET_COUNTRY', event : e})} value={state.countryInput} placeholder='Country' />
+                    <input type='text' onChange={(e) => dispatch({type : 'SET_COUNTRY_CODE', event : e})} value={state.countryCodeInput} placeholder='Country Code'/>
                     <br />
                     <button type='submit'>Submit</button>
                     <br />
@@ -49,8 +49,8 @@ function Form({className='Form'}) {
             </form>
             <div id='location'>
                 {state.city} <br />
-                {state.province} <br />
-                {state.country}
+                {state.stateCode} <br />
+                {state.countryCode} <br />
             </div>
         </div>
     )

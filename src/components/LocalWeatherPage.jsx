@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navbar from "./Navbar";
+import Form from './Form.jsx';
 
 function LocalWeatherPage({baseURL=''}) {
     const [data, setData] = useState(null);
-    const params = useParams();
+    const {params} = useParams();
     // const options = {
     //     method : 'GET',
     //     x-api-key: 
@@ -32,6 +33,7 @@ function LocalWeatherPage({baseURL=''}) {
     return (
         <div>
             <Navbar />
+            <Form />
         </div>
     )
 }
