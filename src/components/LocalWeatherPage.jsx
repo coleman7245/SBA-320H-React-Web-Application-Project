@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Navbar from "./Navbar";
-const BASE_URL = 'http://api.openweathermap.org/';
 
-function LocalWeatherPage() {
+function LocalWeatherPage({baseURL=''}) {
     const [data, setData] = useState(null);
+    const params = useParams();
+    // const options = {
+    //     method : 'GET',
+    //     x-api-key: 
+    // }
 
     async function getData(url, config={}) {
     
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, config);
             const data = await response.json();
             setData(data);
 
@@ -21,7 +26,8 @@ function LocalWeatherPage() {
         return data;
     }
 
-    useEffect(() => {getData(BASE_URL)}, data);
+    if (baseURL)
+        useEffect(() => {getData(baseURL)}, data);
 
     return (
         <div>
