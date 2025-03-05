@@ -55,8 +55,6 @@ function Form({dispatch, className='Form'}) {
                     <br />
                     <input type='text' name='country-code' onChange={(e) => setCountryInput(e.target.value)} value={countryInput} placeholder='Country Code'/>
                     <br />
-                    <input type='text' name='api-key' onChange={(e) => setApiKeyInput(e.target.value)} value={apiKeyInput} placeholder='API Key'/>
-                    <br />
                     <button type='submit'>Submit</button>
                     <br />
                 </label>
