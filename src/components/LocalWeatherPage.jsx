@@ -1,39 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
+import '../styles/LocalWeatherPage.css';
 
 import Navbar from "./Navbar";
 import Form from './Form.jsx';
+import reducer from '../reducer.js';
 
-function LocalWeatherPage({baseURL=''}) {
-    const [data, setData] = useState(null);
-    const {params} = useParams();
-    // const options = {
-    //     method : 'GET',
-    //     x-api-key: 
-    // }
-
-    async function getData(url, config={}) {
-    
-        try {
-            const response = await fetch(url, config);
-            const data = await response.json();
-            setData(data);
-
-        }
-        catch(e) {
-            console.log(e);
-        }
-    
-        return data;
-    }
-
-    if (baseURL)
-        useEffect(() => {getData(baseURL)}, data);
+function LocalWeatherPage({baseURL='', baseGeoURL=''}) {
+    const [state, dispatch] = useReducer(reducer, null);
 
     return (
-        <div>
+        <div className='local-weather-page'>
             <Navbar />
-            <Form />
+            <Form dispatch={dispatch} /> <br />
+            {state && (
+                <div>
+                    <p>
+                        weather : {state.weather[0].description}
+                    </p>
+                </div>
+            )}
         </div>
     )
 }

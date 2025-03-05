@@ -12,6 +12,6 @@ Technologies Used: 1. React: For displaying the web UI and the search results.
 
 Input for the Textfields: 1. City Name: The name of the desired city. Example: 'Littleton'
                           2. State Code: The code of the state. Only applies to the United States. Example: 'CO'
-                          3. Country Code: The code of the country. As per the OpenWeather API: "Please use ISO 3166 country codes." Example: '1' for united States
+                          3. Country Code: The code of the country. As per the OpenWeather API: "Please use ISO 3166 country codes." Example: 'US' for united States
 
 Unsolved Problems: Adding a map that displays the weather as a color overlay would be ideal, but I didn't have enough time to implement that. 

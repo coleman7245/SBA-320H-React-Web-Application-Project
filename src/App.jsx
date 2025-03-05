@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/localweather' element={<LocalWeatherPage />} />
-      <Route path='/localweather/:location' element={<LocalWeatherPage baseURL={BASE_URL} />} />
+      <Route path='/localweather/:location' element={<LocalWeatherPage baseURL={BASE_URL} baseGeoURL={BASE_GEO_URL} />} />
       <Route path='/about' element={<AboutPage />} />
     </Routes>
   )

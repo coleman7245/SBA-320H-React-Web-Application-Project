@@ -1,57 +1,66 @@
-import { useReducer } from 'react';
+import { useState, useReducer } from 'react';
 import '../styles/Form.css';
 
-function Form({className='Form'}) {
-    const [state, dispatch] = useReducer(reducer, {'city' : '', 'countryCode' : '', 'stateCode' : '', 'cityInput' : '', 'countryCodeInput' : '', 'stateCodeInput' : ''});
+function Form({dispatch, className='Form'}) {
+    const [cityInput, setCityInput] = useState('');
+    const [stateInput, setStateInput] = useState('');
+    const [countryInput, setCountryInput] = useState('');
+    const [apiKeyInput, setApiKeyInput] = useState('');
 
-    function reducer(state, action) {
-        let newState = {...state};
+    // function grabData(e) {
+    //     e.preventDefault();
+    //     console.log(cityInput);
+    //     console.log(stateInput);
+    //     console.log(countryInput);
+    //     console.log(apiKeyInput);
+    // }
 
-        switch(action.type) {
-            case 'SET_CITY_NAME':
-                newState.cityInput = action.event.target.value;
-                return newState;
-            case 'SET_COUNTRY_CODE':
-                newState.countryCodeInput = action.event.target.value;
-                return newState;
-            case 'SET_STATE_CODE':
-                newState.stateCodeInput = action.event.target.value;
-                return newState;
-            case 'SUBMIT_FORM':
-                action.event.preventDefault();
-                newState.city = newState.cityInput;
-                newState.countryCode = newState.countryCodeInput;
-                newState.stateCode = newState.stateCodeInput;
-                newState.cityInput = '';
-                newState.countryCodeInput = '';
-                newState.stateCodeInput = '';
-                return newState;
-            default:
-                return state;
+    async function getLocationData(e) {
+        e.preventDefault();
+    
+        try {
+            const geo_url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput},${stateInput},${countryInput}&limit=1&appid=51548fa50f86bdc7a332bc898a984525`;
+            const response = await fetch(geo_url);
+            const geoData = await response.json();
+            //console.log(data);
+            getWeatherData(geoData);
+        }
+        catch(e) {
+            console.log(e);
+        }
+    }
+
+    async function getWeatherData(geoData) {
+
+        try {
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${geoData[0].lat}&lon=${geoData[0].lon}&appid=51548fa50f86bdc7a332bc898a984525`;
+            const response = await fetch(url);
+            const weatherData = await response.json();
+            dispatch({type: 'GET_WEATHER_DATA', payload : weatherData});
+        }
+        catch(e) {
+            console.log(e);
         }
     }
 
     return (
         <div className={className}>
-            <form onSubmit={(e) => dispatch({type : 'SUBMIT_FORM', event : e})}>
+            <form name='weather-form' onSubmit={(e) => getLocationData(e)}>
                 <label>
                     Enter your location
                     <br />
-                    <input type='text' onChange={(e) => dispatch({type : 'SET_CITY_NAME', event : e})} value={state.cityInput} placeholder='City Name'/>
+                    <input type='text' name='city' onChange={(e) => setCityInput(e.target.value)} value={cityInput} placeholder='City Name'/>
                     <br />
-                    <input type='text'  onChange={(e) => dispatch({type : 'SET_STATE_CODE', event : e})} value={state.stateCodeInput} placeholder='State Code' />
+                    <input type='text' name='state-code'  onChange={(e) => setStateInput(e.target.value)} value={stateInput} placeholder='State Code' />
                     <br />
-                    <input type='text' onChange={(e) => dispatch({type : 'SET_COUNTRY_CODE', event : e})} value={state.countryCodeInput} placeholder='Country Code'/>
+                    <input type='text' name='country-code' onChange={(e) => setCountryInput(e.target.value)} value={countryInput} placeholder='Country Code'/>
+                    <br />
+                    <input type='text' name='api-key' onChange={(e) => setApiKeyInput(e.target.value)} value={apiKeyInput} placeholder='API Key'/>
                     <br />
                     <button type='submit'>Submit</button>
                     <br />
                 </label>
             </form>
-            <div id='location'>
-                {state.city} <br />
-                {state.stateCode} <br />
-                {state.countryCode} <br />
-            </div>
         </div>
     )
 }
