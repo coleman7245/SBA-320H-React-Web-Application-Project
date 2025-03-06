@@ -21,6 +21,12 @@
     background-color: red;
 }
 
+.Form button:focus {
+    border: 5px solid red;
+    color: red;
+    background-color: white;
+}
+
 #location {
     color: white;
     font: 1em 'Arial';

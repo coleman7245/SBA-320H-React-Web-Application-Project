@@ -2,7 +2,7 @@ React Weather Application by Derek Coleman
 
 Netlify Link: https://willowy-faloodeh-5b0f6f.netlify.app/
 
-Summary: This is React application that displays the weather over a location that the user specifies. The user inputs their city name, state code (if applicable), and country code in the text fields, then the LocalWeather component makes a fetch request to OpenWeather API to retrieve the current weather of the specified location. It then prints out that information on the /localweather page.
+Summary: This is React application that displays the weather over a location that the user specifies. The user inputs their city name, state code (if applicable), and country code in the text fields of the local weather page, then the LocalWeather component makes a fetch request to OpenWeather API to retrieve the current weather of the specified location. It then prints out that information on the /localweather page.
 
 Technologies Used: 1. React: For displaying the web UI and the search results.
                    2. useReducer: Handles the state in components.
