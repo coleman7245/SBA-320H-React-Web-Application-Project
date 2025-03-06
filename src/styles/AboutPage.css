@@ -1,4 +1,8 @@
-.about-page p, ol {
+.about-page {
     color: white;
-    font: 1em 'Arial';
+    font-family: Arial;
+}
+
+.about-page p, ol {
+    font-size: 1em;
 }
