@@ -10,7 +10,7 @@ function Form({dispatch, className='Form'}) {
         e.preventDefault();
     
         try {
-            const geo_url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput},${stateInput},${countryInput}&limit=1&appid=51548fa50f86bdc7a332bc898a984525`;
+            const geo_url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput},${stateInput},${countryInput}&limit=1&appid=`;
             const response = await fetch(geo_url);
             const geoData = await response.json();
             getWeatherData(geoData);
@@ -23,7 +23,7 @@ function Form({dispatch, className='Form'}) {
     async function getWeatherData(geoData) {
 
         try {
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${geoData[0].lat}&lon=${geoData[0].lon}&appid=51548fa50f86bdc7a332bc898a984525`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${geoData[0].lat}&lon=${geoData[0].lon}&appid=`;
             const response = await fetch(url);
             const weatherData = await response.json();
             dispatch({type: 'GET_WEATHER_DATA', payload : weatherData});
